@@ -40,8 +40,8 @@ public:
 
 /// Testing starts here. This takes the place of "main()" ///
 TEST_CASE("<change this to something meaningful>"){
-    //const that opens what file is to be opened
-    const string fileDIR = "./TestData/Coins.csv";
+    //const that holds what file is to be opened
+    const string fileDIR = "Coins.csv";
     // This is an example test of a class and a public function
     CryptoManager CM;
     CHECK(CM.initialize(fileDIR) == true);
