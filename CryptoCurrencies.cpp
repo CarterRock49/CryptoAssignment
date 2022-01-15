@@ -25,7 +25,7 @@ private:
 public:
     bool initialize(){
         //opens the file that the fileDIR varible has stored in it
-        CryptoCSV.open(fileDIR);
+        CryptoCSV.open("./TestData/Coins.csv");
         //opens file and checks to make sure it was successful
         if(!CryptoCSV.is_open()){
                 return false;
