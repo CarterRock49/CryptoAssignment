@@ -12,8 +12,6 @@ using namespace std;
 /// An example class.
 class CryptoManager{
 private:
-    //const that opens what file is to be opened
-    const string fileDIR = "./TestData/Coins.csv";
     ifstream CryptoCSV;
     struct CryptoCurrencies{
         int rank;
@@ -23,14 +21,14 @@ private:
     };
 
 public:
-    bool initialize(){
+    bool initialize(string fileDIR){
         //opens the file that the fileDIR varible has stored in it
         CryptoCSV.open(fileDIR);
         //opens file and checks to make sure it was successful
-        if(!CryptoCSV.is_open()){
-                return false;
-            } else {
+        if(CryptoCSV.is_open()){
                 return true;
+            } else {
+                return false;
             }
     }
 
@@ -42,9 +40,11 @@ public:
 
 /// Testing starts here. This takes the place of "main()" ///
 TEST_CASE("<change this to something meaningful>"){
+    //const that opens what file is to be opened
+    const string fileDIR = "./TestData/Coins.csv";
     // This is an example test of a class and a public function
     CryptoManager CM;
-    CHECK(CM.initialize() == true);
+    CHECK(CM.initialize(fileDIR) == true);
 
 }
 
