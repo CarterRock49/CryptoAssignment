@@ -12,6 +12,7 @@ using namespace std;
 
 class CryptoManager{
 private:
+    const char desiredletter = 'E';
     ifstream CryptoCSV;
     //these are all strings because whenever I tried to make some of them ints I got tons of conversion errors 
     //so if say the requirements needed something like the marketcap as an int you would have to convert it later before use
@@ -21,6 +22,8 @@ private:
         string symbol;
         string marketcap;
     };
+    //I know the assignment calls for an array of structs but I decided to use a vector of structs since they are very similar and I learned it recently and wanted to try it out, I hope this is ok
+    vector<CryptoCurrencies> fileinfo;
 
 public:
     //member function takes in file name as a parameter, opens the file, and returns if it was successful
@@ -34,10 +37,8 @@ public:
                 return false;
             }
     }
-
+    //member function reads the file and inserts it into a vector of structs
     int fileread(){
-        //I know the assignment calls for an array of structs but I decided to use a vector of structs since I learned it recently and wanted to try it out, I hope this is ok
-        vector<CryptoCurrencies> fileinfo;
         string entry;
         int index = 0;
         //this first set is to get past the column names in the csv file
@@ -65,6 +66,23 @@ public:
         //returns the count of structs
         return fileinfo.size();
     }
+    //member function iterates through the vector of structs and checks the symbol column to see if they start with the desired letter
+    int coin_counter(){
+        char letter;
+        int counter = 0;
+        //interates through the vector of structs
+        for (int index2 = 0; index2 < fileinfo.size(); index2++){
+            //assigns the first letter of the symbol column for the row based on the index to the 'letter' varible
+            letter = fileinfo[index2].symbol.front();
+            //checks if the assigned letter is equal to the desired letter
+            if (letter == desiredletter){
+                counter++;
+            } else {
+
+            }
+        }
+        return counter;
+    }
 };
 
 
@@ -81,6 +99,12 @@ TEST_CASE("Test the CryptoManager class and its member functions"){
     CHECK(CM.initialize(fileDIR) == true);
     //checks if the count of structs is 50
     CHECK(CM.fileread() == filelength);
+    //checks if the count of structs is not 49
+    CHECK(CM.fileread() != 49);
+    //checks if amount of symbols that start with the letter E is not 4
+    CHECK(CM.coin_counter() != 4);
+    //checks if amount of symbols that start with the letter E is 3
+    CHECK(CM.coin_counter() == 3);
 
 }
 
