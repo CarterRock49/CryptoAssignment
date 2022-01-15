@@ -27,10 +27,10 @@ public:
         //opens the file that the fileDIR varible has stored in it
         CryptoCSV.open(fileDIR);
         //opens file and checks to make sure it was successful
-        if(CryptoCSV.is_open()){
-                return true;
-            } else {
+        if(!CryptoCSV.is_open()){
                 return false;
+            } else {
+                return true;
             }
     }
 
