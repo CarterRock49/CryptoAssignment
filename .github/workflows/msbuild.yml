@@ -6,7 +6,7 @@ env:
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
   EXE_DIR: ./x64/Release
-  TEST_DATA_FILES: ./TestData/Coins.csv
+  TEST_DATA_FILES: ./TestData
 
 jobs:
   build-and-test:
