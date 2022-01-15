@@ -67,7 +67,8 @@ public:
     }
 };
 
-/// Testing starts here. This takes the place of "main()" ///
+
+// Testing starts here. This takes the place of "main()" //
 TEST_CASE("Test the CryptoManager class and its member functions"){
     //const that holds what file is to be opened
     const string fileDIR = "Coins.csv";
