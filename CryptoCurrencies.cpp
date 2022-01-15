@@ -12,7 +12,7 @@ using namespace std;
 /// An example class.
 class CryptoManager{
 private:
-    //change this to change what file is opened
+    //const that opens what file is to be opened
     const string fileDIR = "./TestData/Coins.csv";
     ifstream CryptoCSV;
     struct CryptoCurrencies{
@@ -25,7 +25,7 @@ private:
 public:
     bool initialize(){
         //opens the file that the fileDIR varible has stored in it
-        CryptoCSV.open("./TestData/Coins.csv");
+        CryptoCSV.open(fileDIR);
         //opens file and checks to make sure it was successful
         if(!CryptoCSV.is_open()){
                 return false;
