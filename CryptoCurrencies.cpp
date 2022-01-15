@@ -13,7 +13,7 @@ using namespace std;
 class CryptoManager{
 private:
     //change this to change what file is opened
-    const string fileDIR = "TestData/Coins.csv";
+    const string fileDIR = "./TestData/Coins.csv";
     ifstream CryptoCSV;
     struct CryptoCurrencies{
         int rank;
@@ -32,6 +32,11 @@ public:
             } else {
                 return false;
             }
+    }
+
+    int fileread(){
+
+
     }
 };
 
